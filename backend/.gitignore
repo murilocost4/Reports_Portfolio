@@ -1,0 +1,35 @@
+node_modules
+laudos
+logs
+uploads
+.env
+scripts
+
+# SEGURANÇA CRÍTICA - Certificados digitais (NUNCA commitar)
+# Proteção contra vazamento de certificados digitais
+storage/certificados/
+storage/certificados/*
+storage/certificados/**/*
+*.pfx
+*.p12
+*.pem
+*.cert
+*.crt
+*.key
+
+# Backup de certificados
+certificados_backup/
+cert_backup/
+backup_certificados/
+
+# Arquivos de configuração de certificados
+cert_config.json
+certificate_config.json
+
+# Logs de certificados (podem conter informações sensíveis)
+cert_*.log
+certificado_*.log
+
+storage/
+storage/*
+storage/**/*

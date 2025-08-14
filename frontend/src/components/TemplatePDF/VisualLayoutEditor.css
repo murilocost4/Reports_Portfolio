@@ -1,0 +1,213 @@
+/* Estilos para o sistema drag-and-drop do template editor */
+
+.template-editor-canvas {
+  position: relative;
+  background-color: white;
+  border: 2px dashed #d1d5db;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.draggable-element {
+  position: absolute;
+  border: 2px solid #d1d5db;
+  background-color: white;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  cursor: grab;
+}
+
+.draggable-element:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.15);
+}
+
+.draggable-element.dragging {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
+  cursor: grabbing;
+  z-index: 1000;
+}
+
+.draggable-element.hidden {
+  opacity: 0.5;
+  border-style: dashed;
+}
+
+.element-header {
+  background-color: #f9fafb;
+  padding: 0.25rem 0.5rem;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.element-content {
+  padding: 0.5rem;
+  height: calc(100% - 32px);
+  overflow: hidden;
+}
+
+.resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #3b82f6;
+  cursor: se-resize;
+  border-top-left-radius: 0.375rem;
+}
+
+.resize-handle:hover {
+  background-color: #2563eb;
+}
+
+.canvas-ruler-horizontal {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.canvas-ruler-vertical {
+  position: absolute;
+  left: -32px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.ruler-mark {
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+/* Animações suaves para elementos */
+.element-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.element-scale-hover:hover {
+  transform: scale(1.02);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilos para botões de controle */
+.control-button {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.control-button:hover {
+  background-color: #e5e7eb;
+}
+
+.control-button.active {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+/* Grid de alinhamento visual */
+.alignment-grid {
+  background-image: 
+    linear-gradient(to right, rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+/* Indicadores de posição */
+.position-indicator {
+  position: absolute;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  font-family: monospace;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+/* Estilos para elementos específicos */
+.logo-placeholder {
+  border: 2px dashed #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+  background-color: #f9fafb;
+}
+
+.content-placeholder {
+  background-color: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .template-editor-canvas {
+    transform: scale(0.8);
+    transform-origin: top left;
+  }
+  
+  .canvas-ruler-horizontal,
+  .canvas-ruler-vertical {
+    display: none;
+  }
+  
+  .draggable-element {
+    min-width: 80px;
+    min-height: 40px;
+  }
+}
+
+/* Estilos para modo escuro (opcional) */
+@media (prefers-color-scheme: dark) {
+  .template-editor-canvas {
+    background-color: #1f2937;
+    border-color: #4b5563;
+  }
+  
+  .draggable-element {
+    background-color: #374151;
+    border-color: #6b7280;
+    color: #f9fafb;
+  }
+  
+  .element-header {
+    background-color: #4b5563;
+    border-color: #6b7280;
+  }
+}

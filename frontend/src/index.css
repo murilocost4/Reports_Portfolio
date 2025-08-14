@@ -1,0 +1,118 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+@import "tailwindcss";
+
+/* Animações personalizadas para botões de ação */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.react-datepicker {
+  font-size: 0.8rem !important;
+}
+
+.react-datepicker__header {
+  padding-top: 0.5rem !important;
+}
+
+.react-datepicker__month-container {
+  padding: 0.3rem !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 1.9rem !important;
+  line-height: 1.9rem !important;
+  margin: 0.15rem !important;
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* Utilities para botões de ação */
+  .action-button-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .action-button-shimmer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.6s ease-out;
+  }
+
+  .action-button-shimmer:hover::before {
+    left: 100%;
+  }
+
+  .hover\:bounce-subtle:hover {
+    animation: bounce-subtle 0.4s ease-out;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  .bounce-subtle {
+    animation: bounce-subtle 0.3s ease-in-out;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
